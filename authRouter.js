@@ -1,7 +1,5 @@
-const Router = require('express')
 const controller = require('./authController')
-const router = new Router()
-const {check} = require("express-validator")
+const router = require('express').Router()
 
 const endPoints = {
     me: '/me',
@@ -10,7 +8,7 @@ const endPoints = {
 }
 
 router.get(endPoints.me, controller.me)
-router.post(endPoints.login, [check("name", "Name require").notEmpty()], controller.login)
+router.post(endPoints.login, controller.login)
 router.delete(endPoints.logout, controller.logout)
 
 module.exports = router
